@@ -1,0 +1,9 @@
+# [START app_yaml]
+runtime: nodejs  
+env: flex  
+
+
+# [END app_yaml]
+beta_settings:
+  cloud_sql_instances: rising-study-289606:us-central1:nodejs-jwt123456
+

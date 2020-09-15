@@ -1,9 +1,9 @@
-/* 
+/
 module.exports = {
-    HOST: "localhost",
-    USER: "root",
-    PASSWORD: "",
-    DB: "test",
+    HOST: "34.197.172.3",
+    USER: "user_mlm",
+    PASSWORD: "&ewYc9Pe",
+    DB: "mean_stack",
     dialect: "mysql",
     pool: {
       max: 5,
@@ -12,20 +12,4 @@ module.exports = {
       idle: 10000
     }
   };
-*/
 
-module.exports = {
-        HOST: '/cloudsql/rising-study-289606:us-central1:nodejs-jwt123456',
-        DB: 'test', // Create at step 3
-        PASSWORD: 'admin@nupay',
-        USER: 'root',
-        name: 'test',
-        connector: 'mysql',
-        dialect: "mysql",
-        pool: {
-            max: 5,
-            min: 0,
-            acquire: 30000,
-            idle: 10000
-        }
-};

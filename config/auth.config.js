@@ -1,3 +1,3 @@
 module.exports = {
-    secret: "nupay-secret-key"
+    secret: "any-secret-key"
 };

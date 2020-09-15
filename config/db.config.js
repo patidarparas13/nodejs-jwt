@@ -1,4 +1,3 @@
-/
 module.exports = {
     HOST: "34.197.172.3",
     USER: "user_mlm",

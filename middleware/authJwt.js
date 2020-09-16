@@ -23,6 +23,27 @@ verifyToken = (req, res, next) => {
   });
 };
 
+verifyAPIKey = (req,res,next)=>{
+  let apiKey = req.headers["x-api-key"];
+  if (!apiKey) {
+    return res.status(403).send({
+      message: "No APIKey provided!"
+    });
+  }
+
+  User.findOne({
+    where: {
+      apiKey: apiKey
+    }
+  }).then(apiResult =>{
+    if(!apiResult){
+      return res.status(404).send({ message: "API Not found." });
+    }
+    next();
+    return;
+  })
+}
+
 isAdmin = (req, res, next) => {
   User.findByPk(req.userId).then(user => {
     user.getRoles().then(roles => {
@@ -84,6 +105,7 @@ const authJwt = {
   verifyToken: verifyToken,
   isAdmin: isAdmin,
   isModerator: isModerator,
+  verifyAPIKey:verifyAPIKey,
   isModeratorOrAdmin: isModeratorOrAdmin
 };
 module.exports = authJwt;

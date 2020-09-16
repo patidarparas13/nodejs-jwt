@@ -8,6 +8,10 @@ module.exports = (sequelize, Sequelize) => {
       },
       password: {
         type: Sequelize.STRING
+      },
+      apiKey:{
+        type: Sequelize.STRING,
+        defaultValue: ''
       }
     });
   

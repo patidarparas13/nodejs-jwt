@@ -1,4 +1,18 @@
 module.exports = {
+    HOST: "localhost",
+    USER: "root",
+    PASSWORD: "",
+    DB: "test",
+    dialect: "mysql",
+    pool: {
+      max: 5,
+      min: 0,
+      acquire: 30000,
+      idle: 10000
+    }
+  };
+/* 
+module.exports = {
     HOST: "34.197.172.3",
     USER: "user_mlm",
     PASSWORD: "&ewYc9Pe",
@@ -12,3 +26,5 @@ module.exports = {
     }
   };
 
+
+*/

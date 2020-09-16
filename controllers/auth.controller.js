@@ -7,6 +7,7 @@ const Op = db.Sequelize.Op;
 
 var jwt = require("jsonwebtoken");
 var bcrypt = require("bcryptjs");
+const { user } = require("../models");
 
 exports.signup = (req, res) => {
   // Save User to Database
@@ -50,7 +51,7 @@ exports.signin = (req, res) => {
       if (!user) {
         return res.status(404).send({ message: "User Not found." });
       }
-
+      userData = user;
       var passwordIsValid = bcrypt.compareSync(
         req.body.password,
         user.password
@@ -85,3 +86,22 @@ exports.signin = (req, res) => {
       res.status(500).send({ message: err.message });
     });
 };
+
+exports.generateAPIKey = (req,res) =>{
+    data = userData.email+userData.username;
+    let apiKey = Buffer.from(data).toString('base64')
+    User.update(
+      {apiKey: apiKey }, //what going to be updated
+      { where: { email:userData.email }}
+      )
+  .then(result => {
+    // code with result
+    res.json(result)
+  })
+  .catch(error => {
+    // error handling
+    res.json("Error Updating API Key")
+  })
+  console.log(Buffer.from(data).toString('base64'))
+
+}

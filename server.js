@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({extended:true}))
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 
+
 app.get("/",(req,res)=>{
     res.json({message:"Welcome!"})
 })
@@ -24,12 +25,13 @@ app.get("/",(req,res)=>{
 const db = require("./models");
 const Role = db.role;
 
-// Prod: db.sequelize.sync();
+// Prod: 
+db.sequelize.sync();
 
-db.sequelize.sync({force: true}).then(() => {
-  console.log('Drop and Resync Db');
-  initial();
-});
+//db.sequelize.sync({force: true}).then(() => {
+  //console.log('Drop and Resync Db');
+  //initial();
+//});
 
 function initial() {
     Role.create({

@@ -96,12 +96,12 @@ exports.generateAPIKey = (req,res) =>{
       )
   .then(result => {
     // code with result
-    res.json(result)
+    res.send(apiKey)
   })
   .catch(error => {
     // error handling
     res.json("Error Updating API Key")
   })
-  console.log(Buffer.from(data).toString('base64'))
+  //console.log(Buffer.from(data).toString('base64'))
 
 }

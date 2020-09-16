@@ -12,6 +12,10 @@ module.exports = (sequelize, Sequelize) => {
       apiKey:{
         type: Sequelize.STRING,
         defaultValue: ''
+      },
+      activeStatus:{
+        type:Sequelize.INTEGER,
+        defaultValue:0
       }
     });
   

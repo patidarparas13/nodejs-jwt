@@ -10,6 +10,24 @@ module.exports = function(app) {
     next();
   });
 
+
+  app.get("/api/test/findAll", 
+  [authJwt.verifyToken,authAPI.verifyAPIKey],
+  controller.findAll);
+
+  app.get("/api/test/:userId", 
+  [authJwt.verifyToken,authAPI.verifyAPIKey],
+  controller.findByID);
+
+  app.put("/api/test/:userId", 
+  [authJwt.verifyToken,authAPI.verifyAPIKey],
+  controller.updateByID);
+
+  app.delete("/api/test/:userId", 
+  [authJwt.verifyToken,authAPI.verifyAPIKey],
+  controller.deleteByID);
+
+
   app.get("/api/test/all", controller.allAccess);
 
   app.get(
@@ -17,7 +35,7 @@ module.exports = function(app) {
     [authJwt.verifyToken,authAPI.verifyAPIKey],
     controller.userBoard
   );
-
+  
   app.get(
     "/api/test/mod",
     [authJwt.verifyToken, authJwt.isModerator],
@@ -26,7 +44,7 @@ module.exports = function(app) {
 
   app.get(
     "/api/test/admin",
-    [authJwt.verifyToken, authJwt.isAdmin],
+    [authJwt.verifyToken,authAPI.verifyAPIKey,authJwt.isAdmin],
     controller.adminBoard
   );
 };
